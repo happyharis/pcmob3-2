@@ -1,13 +1,17 @@
 import { Entypo } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import * as SQLite from "expo-sqlite";
 
 const db = SQLite.openDatabase("notes.db");
 
 function NotesScreen({ navigation }) {
+  const [notes, setNotes] = useState([
+    { title: "Sleep", done: false, id: "0" },
+  ]);
+
   console.log("Use effect ran");
   useEffect(() => {
     navigation.setOptions({
@@ -20,7 +24,8 @@ function NotesScreen({ navigation }) {
   });
 
   function addNote() {
-    console.log("Add Note");
+    let newNote = { title: "test", done: false, id: notes.length.toString() };
+    setNotes([...notes, newNote]);
   }
 
   return <View style={styles.container}></View>;
