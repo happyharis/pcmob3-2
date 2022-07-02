@@ -1,8 +1,25 @@
+import { Entypo } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StyleSheet, View } from "react-native";
+import { useEffect } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 function NotesScreen({ navigation }) {
+  console.log("Use effect ran");
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={addNote}>
+          <Entypo name="new-message" size={24} color="black" />
+        </TouchableOpacity>
+      ),
+    });
+  });
+
+  function addNote() {
+    console.log("Add Note");
+  }
+
   return <View style={styles.container}></View>;
 }
 
@@ -16,16 +33,16 @@ export default function App() {
           name="Notes"
           component={NotesScreen}
           options={{
-            headerTitle: "Note-ify",
+            headerTitle: "Notes App",
             headerTitleStyle: {
               fontWeight: "bold",
               fontSize: 30,
             },
             headerStyle: {
-              height: 110,
+              height: 120,
               backgroundColor: "yellow",
-              borderBottomColor: "grey",
-              borderBottomWidth: 2,
+              borderBottomColor: "#ccc",
+              borderBottomWidth: 1,
             },
           }}
         />
