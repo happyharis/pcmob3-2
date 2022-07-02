@@ -3,6 +3,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useEffect } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
+import * as SQLite from "expo-sqlite";
+
+const db = SQLite.openDatabase("notes.db");
 
 function NotesScreen({ navigation }) {
   console.log("Use effect ran");
