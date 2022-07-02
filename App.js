@@ -25,7 +25,7 @@ export default function App() {
               height: 110,
               backgroundColor: "yellow",
               borderBottomColor: "grey",
-              borderBottomWidth: 1,
+              borderBottomWidth: 2,
             },
           }}
         />
